@@ -3,6 +3,7 @@ from discord.ext import commands
 
 import json
 import random
+import os
 
 with open('settings.json','r', encoding = 'utf8') as jfile:
     jdata = json.load(jfile)
@@ -34,4 +35,7 @@ async def picture(ctx):
     pic = discord.File(random_pic)
     await ctx.send(file= pic)
 
+for filename in os.listdir('./cmds'):
+
+ 
 bot.run(jdata['TOKEN'])
