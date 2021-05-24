@@ -1,4 +1,5 @@
 import discord
+from discord.channel import VocalGuildChannel, VoiceChannel
 from discord.ext import commands
 
 import json
@@ -35,7 +36,16 @@ async def picture(ctx):
     pic = discord.File(random_pic)
     await ctx.send(file= pic)
 
-for filename in os.listdir('./cmds'):
+@bot.command()
+async def Kevin(ctx):
+    await ctx.send('陳冠綸是白癡')
 
- 
+@bot.command()
+async def Evan(ctx):
+    await ctx.send('李翊綸噁男')
+
+@bot.command()
+async def play(ctx, url : str):
+    VocalChannel = discord.utils.get(ctx.guild.voice_channels, name = '一般')
+
 bot.run(jdata['TOKEN'])
