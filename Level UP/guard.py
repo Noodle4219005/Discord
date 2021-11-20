@@ -4,12 +4,14 @@ import pyautogui
 import pyperclip
 import time
 import cv2
+import os
 import numpy as np
 from numpy import array, uint8
 from PIL import ImageGrab
 
 time.sleep(1)
 
+os.system("chcp 65001")
 load = 0
 testplace = 0
 print('請將DC全螢幕，並且把任何干擾畫面的視窗移開畫面')
@@ -29,7 +31,7 @@ def test(screenshot):
     similarity = cv2.compareHist(screenshothist, imghist, cv2.HISTCMP_CORREL)
     #cv2.imshow('show', screenshotg)
     #cv2.waitKey(0)
-    if (0.0022 <= similarity <= 0.0035):
+    if (0.01 <= similarity <= 0.013):
         time.sleep(1)
         print('\r', '處理中...', end='')
         screenshot = ImageGrab.grab(bbox=(384*(width / 1920), 829*(height / 1080), 468*(width / 1920), 943*(height / 1080)))
@@ -104,7 +106,7 @@ def solve(screenshotg):
             print(item[memory[i][0]])
             pyperclip.copy(item[memory[i][0]])
             pyautogui.hotkey('Ctrl', 'v')
-            time.sleep(2)
+            time.sleep(1)
             pyautogui.press('enter')
 
 while 1:
@@ -123,8 +125,8 @@ while 1:
     else:
         load += 1
 
-#1920*1080 *(width / 1920) *(height / 1080)
-#380, 773, 631, 802 0.00287
-#380, 835, 631, 863 0.00329
+# 1920*1080 *(width / 1920) *(height / 1080)
+# 380, 773, 631, 802 0.00287
+# 380, 835, 631, 863 0.00329
 
-#384, 829, 468, 943
+# 384, 829, 468, 943
